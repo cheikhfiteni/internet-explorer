@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 History Explorer</h1>
+        </header>
+        
+        <section class="date-filters">
+            <h3>📅 Date Range</h3>
+            <div class="date-inputs">
+                <div class="input-group">
+                    <label for="startDate">Start Date & Time:</label>
+                    <input type="datetime-local" id="startDate">
+                </div>
+                <div class="input-group">
+                    <label for="endDate">End Date & Time:</label>
+                    <input type="datetime-local" id="endDate">
+                </div>
+                <div class="quick-dates">
+                    <button id="lastWeek">Last Week</button>
+                    <button id="lastMonth">Last Month</button>
+                    <button id="lastYear">Last Year</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="keyword-filters">
+            <h3>🔎 Keyword Filters</h3>
+            <div class="input-group">
+                <label for="includeKeywords">Must contain (comma separated):</label>
+                <input type="text" id="includeKeywords" placeholder="e.g. github, programming, tutorial">
+            </div>
+            <div class="input-group">
+                <label for="excludeKeywords">Must NOT contain (comma separated):</label>
+                <input type="text" id="excludeKeywords" placeholder="e.g. facebook, twitter, reddit">
+            </div>
+        </section>
+
+        <section class="url-filters">
+            <h3>🚫 URL Exclusions</h3>
+            <div class="input-group">
+                <label for="excludeUrls">Exclude base URLs (comma separated):</label>
+                <input type="text" id="excludeUrls" placeholder="e.g. youtube.com, x.com, facebook.com">
+                <div class="common-exclusions">
+                    <span class="exclusion-tag" data-url="youtube.com">YouTube</span>
+                    <span class="exclusion-tag" data-url="x.com">X (Twitter)</span>
+                    <span class="exclusion-tag" data-url="facebook.com">Facebook</span>
+                    <span class="exclusion-tag" data-url="instagram.com">Instagram</span>
+                    <span class="exclusion-tag" data-url="reddit.com">Reddit</span>
+                    <span class="exclusion-tag" data-url="tiktok.com">TikTok</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="search-controls">
+            <div class="button-group">
+                <button id="searchBtn" class="primary">🔍 Search History</button>
+                <button id="clearBtn" class="secondary">🗑️ Clear</button>
+            </div>
+            <div class="save-controls">
+                <input type="text" id="searchName" placeholder="Search name...">
+                <button id="saveSearch">💾 Save Search</button>
+                <select id="savedSearches">
+                    <option value="">Load saved search...</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="results-info">
+            <div id="resultsCount">Ready to search...</div>
+            <div class="result-controls">
+                <label>
+                    <input type="checkbox" id="showUrls"> Show full URLs
+                </label>
+                <button id="exportResults" style="display: none;">📋 Export Results</button>
+            </div>
+        </section>
+
+        <section class="results">
+            <div id="historyResults"></div>
+        </section>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Advanced History Explorer",
+  "version": "1.0",
+  "description": "Search and filter your Chrome history with advanced options",
+  "permissions": [
+    "history",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Advanced History Explorer"
+  },
+  "icons": {
+    "16": "assets/turtle_16.png",
+    "48": "assets/turtle_48.png",
+    "128": "assets/turtle_128.png"
+  }
+}
