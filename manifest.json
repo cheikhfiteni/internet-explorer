@@ -5,7 +5,8 @@
   "description": "Search and filter your Chrome history with advanced options",
   "permissions": [
     "history",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "action": {
     "default_popup": "popup.html",

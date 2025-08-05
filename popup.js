@@ -215,6 +215,18 @@ class HistoryExplorer {
                 this.excludeItem(itemId);
             });
         });
+
+        // Add event listeners for links to ensure they open in new tabs and popup stays open
+        resultsContainer.querySelectorAll('a[href]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Use chrome.tabs.create to ensure popup stays open
+                chrome.tabs.create({ url: link.href, active: false });
+                
+                // Add visual feedback that link was opened
+                this.showLinkOpenedFeedback(link.textContent.trim());
+            });
+        });
     }
 
     excludeItem(itemId) {
@@ -370,6 +382,21 @@ class HistoryExplorer {
         const feedback = document.createElement('div');
         feedback.className = 'exclusion-feedback';
         feedback.textContent = `✓ Excluded ${domain}`;
+        document.body.appendChild(feedback);
+        
+        // Remove after animation
+        setTimeout(() => {
+            if (feedback.parentNode) {
+                feedback.parentNode.removeChild(feedback);
+            }
+        }, 2000);
+    }
+
+    showLinkOpenedFeedback(title) {
+        // Create and show a temporary feedback message for opened links
+        const feedback = document.createElement('div');
+        feedback.className = 'link-opened-feedback';
+        feedback.textContent = `🔗 Opened: ${title.length > 30 ? title.substring(0, 30) + '...' : title}`;
         document.body.appendChild(feedback);
         
         // Remove after animation
